@@ -40,6 +40,15 @@ extension UsersListViewController: UICollectionViewDataSource {
 
         return cell
     }
+}
 
-
+extension UsersListViewController {
+    static func create(
+        from storyboard: UIStoryboard = .main,
+        withViewModel viewModel: Any
+    ) -> Self {
+        let viewController = storyboard.instantiateViewController(withIdentifier: "UsersListViewController") as! Self
+        //viewController.viewModel = viewModel
+        return viewController
+    }
 }

@@ -60,6 +60,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="contentContainerView" destination="trj-WM-evS" id="Sgd-54-guy"/>
                         <outlet property="contentSegmentedControl" destination="wdg-xt-ezt" id="QBs-f2-FWn"/>
                         <outlet property="switchContentView" destination="3a8-qe-mRk" id="8BM-Qd-Bq6"/>
                     </connections>

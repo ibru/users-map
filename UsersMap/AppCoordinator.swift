@@ -19,9 +19,22 @@ final class AppCoordinator {
 
 extension AppCoordinator: Coordinator {
     func start() {
-        let containerVC = UIStoryboard.main.instantiateViewController(withIdentifier: "ContainerViewController") as! ContainerViewController
+        let containerVC = ContainerViewController.create(
+            withMapController: createUsersMapViewController(),
+            listController: createUsersListViewController()
+        )
 
         window.rootViewController = containerVC
+    }
+}
+
+extension AppCoordinator {
+    func createUsersMapViewController() -> UsersMapViewController {
+        UsersMapViewController.create(withViewModel: "not implemented yet")
+    }
+
+    func createUsersListViewController() -> UsersListViewController {
+        UsersListViewController.create(withViewModel: "Not implemented yet")
     }
 }
 

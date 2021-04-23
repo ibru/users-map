@@ -13,3 +13,14 @@ final class UsersMapViewController: UIViewController {
         super.viewDidLoad()
     }
 }
+
+extension UsersMapViewController {
+    static func create(
+        from storyboard: UIStoryboard = .main,
+        withViewModel viewModel: Any
+    ) -> Self {
+        let viewController = storyboard.instantiateViewController(withIdentifier: "UsersMapViewController") as! Self
+        //viewController.viewModel = viewModel
+        return viewController
+    }
+}
