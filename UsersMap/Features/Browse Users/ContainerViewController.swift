@@ -22,7 +22,7 @@ final class ContainerViewController: UIViewController {
     override func loadView() {
         super.loadView()
 
-        switchContentView.layer.cornerRadius = 20
+        switchContentView.layer.cornerRadius = 10
         switchContentView.layer.masksToBounds = true
         switchContentView.layer.shadowColor = UIColor.blue.withAlphaComponent(0.6).cgColor
         switchContentView.layer.shadowOffset = .init(width: 3, height: 3)
@@ -91,7 +91,6 @@ extension ContainerViewController {
     }
 }
 
-
 extension UIViewController {
     func add(_ child: UIViewController, to view: UIView) {
         addChild(child)
@@ -100,11 +99,7 @@ extension UIViewController {
     }
 
     func remove() {
-        // Just to be safe, we check that this view controller
-        // is actually added to a parent before removing it.
-        guard parent != nil else {
-            return
-        }
+        guard parent != nil else { return }
 
         willMove(toParent: nil)
         view.removeFromSuperview()

@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import Combine
 
 final class UsersListViewController: UIViewController {
+
+    private(set) var viewModel: UsersListViewModel!
+
+    private var cancellables: Set<AnyCancellable> = []
 
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -15,6 +20,12 @@ final class UsersListViewController: UIViewController {
         super.viewDidLoad()
 
         collectionView.dataSource = self
+
+        viewModel.$users
+            .sink { [weak self] _ in
+                self?.collectionView.reloadData()
+            }
+            .store(in: &cancellables)
     }
 
     override func viewDidLayoutSubviews() {
@@ -26,7 +37,7 @@ final class UsersListViewController: UIViewController {
 
 extension UsersListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        viewModel.users.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -35,8 +46,8 @@ extension UsersListViewController: UICollectionViewDataSource {
             for: indexPath
         ) as! UserInfoCell
 
-
-        //cell.configure(with: <#T##UserInfo#>)
+        let user = viewModel.users[indexPath.item]
+        cell.configure(with: user)
 
         return cell
     }
@@ -45,10 +56,10 @@ extension UsersListViewController: UICollectionViewDataSource {
 extension UsersListViewController {
     static func create(
         from storyboard: UIStoryboard = .main,
-        withViewModel viewModel: Any
+        withViewModel viewModel: UsersListViewModel
     ) -> Self {
         let viewController = storyboard.instantiateViewController(withIdentifier: "UsersListViewController") as! Self
-        //viewController.viewModel = viewModel
+        viewController.viewModel = viewModel
         return viewController
     }
 }

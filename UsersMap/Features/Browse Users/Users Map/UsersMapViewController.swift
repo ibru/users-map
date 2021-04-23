@@ -9,6 +9,8 @@ import UIKit
 
 final class UsersMapViewController: UIViewController {
 
+    private(set) var viewModel: UsersListViewModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -17,10 +19,10 @@ final class UsersMapViewController: UIViewController {
 extension UsersMapViewController {
     static func create(
         from storyboard: UIStoryboard = .main,
-        withViewModel viewModel: Any
+        withViewModel viewModel: UsersListViewModel
     ) -> Self {
         let viewController = storyboard.instantiateViewController(withIdentifier: "UsersMapViewController") as! Self
-        //viewController.viewModel = viewModel
+        viewController.viewModel = viewModel
         return viewController
     }
 }
