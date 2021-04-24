@@ -20,6 +20,7 @@ final class UsersListViewController: UIViewController {
         super.viewDidLoad()
 
         collectionView.dataSource = self
+        collectionView.delegate = self
 
         viewModel.$users
             .sink { [weak self] _ in
@@ -35,7 +36,7 @@ final class UsersListViewController: UIViewController {
     }
 }
 
-extension UsersListViewController: UICollectionViewDataSource {
+extension UsersListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.users.count
     }
@@ -50,6 +51,11 @@ extension UsersListViewController: UICollectionViewDataSource {
         cell.configure(with: user)
 
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let user = viewModel.users[indexPath.item]
+        viewModel.select(user: user)
     }
 }
 

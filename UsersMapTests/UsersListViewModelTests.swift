@@ -11,17 +11,12 @@ import XCTest
 class UsersListViewModelTests: XCTestCase {
 
     func testUsersLoadsUsigUsersListService() {
-        let service = UsersListServiceSpy(
-            users: [
-                .mock(firstName: "John", lastName: "Doe"),
-                .mock(firstName: "Jack", lastName: "Moore")
-            ]
-        )
+        let service = UsersListServiceSpy(users: mockUsers)
         let viewModel = UsersListViewModel(usersService: service)
         let expectedUserNames = ["John Doe", "Jack Moore"]
         var actualUserNames = [String]()
 
-        _ = viewModel.$users
+        let c = viewModel.$users
             .map { $0.map { $0.fullName} }
             .sink { actualUserNames = $0 }
 
@@ -29,7 +24,31 @@ class UsersListViewModelTests: XCTestCase {
         XCTAssertEqual(actualUserNames, expectedUserNames)
     }
 
+    func testSelectUserPublishesInteraction() {
+        let service = UsersListServiceSpy(users: mockUsers)
+        let viewModel = UsersListViewModel(usersService: service)
+
+        let expectedInteractions: [UsersListViewModel.Interaction] = [.none, .selectUser(mockUsers[1])]
+        var actualInteractions: [UsersListViewModel.Interaction] = []
+
+        let c = viewModel.$interactions
+            .sink { actualInteractions.append($0) }
+
+        viewModel.select(user: UsersListViewModel.UserInfo(user: mockUsers[1]))
+
+        XCTAssertEqual(actualInteractions, expectedInteractions)
+    }
+
     // TODO: add more tests
+}
+
+extension UsersListViewModelTests {
+    var mockUsers: [User] {
+        [
+            .mock(id: "id1", firstName: "John", lastName: "Doe"),
+            .mock(id: "id2", firstName: "Jack", lastName: "Moore")
+        ]
+    }
 }
 
 // MARK: -
@@ -37,6 +56,7 @@ import Combine
 
 extension User {
     static func mock(
+        id: String = "mock id",
         firstName: String = "mock first",
         lastName: String = "mock last",
         email: String = "mock@mock.com",
@@ -44,6 +64,7 @@ extension User {
         avatarURL: String? = nil
         ) -> Self {
         .init(
+            id: id,
             firstName: firstName,
             lastName: lastName,
             email: email,

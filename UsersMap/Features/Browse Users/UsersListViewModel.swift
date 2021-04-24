@@ -12,6 +12,10 @@ final class UsersListViewModel: ObservableObject {
     @Published var users: [UserInfo] = []
     @Published var error: Error?
 
+    @Published var interactions: UsersListViewModel.Interaction = .none
+
+    @Published private var userEntities: [User] = []
+
     private let usersService: UsersListService
 
     init(usersService: UsersListService) {
@@ -22,23 +26,38 @@ final class UsersListViewModel: ObservableObject {
                 self.error = error
                 return Just([]).eraseToAnyPublisher()
             }
-            .map {
-                $0.map {
-                    UserInfo(
-                        avatarImageURL: $0.avatarURL.map { URL(string: $0) } ?? nil,
-                        fullName: "\($0.firstName) \($0.lastName)",
-                        userName: $0.username
-                    )
-                }
-            }
+            .assign(to: &$userEntities)
+
+        $userEntities
+            .map { $0.map(UserInfo.init) }
             .assign(to: &$users)
+    }
+
+    func select(user: UserInfo) {
+        guard let selectedUser = userEntities.first(where: { $0.id == user.id }) else { return }
+        interactions = .selectUser(selectedUser)
     }
 }
 
 extension UsersListViewModel {
-    struct UserInfo {
+    struct UserInfo: Identifiable {
+        let id: String
         let avatarImageURL: URL?
         let fullName: String
         let userName: String
+
+        init(user: User) {
+            id = user.id
+            avatarImageURL = user.avatarURL.map { URL(string: $0) } ?? nil
+            fullName = "\(user.firstName) \(user.lastName)"
+            userName = user.username
+        }
+    }
+}
+
+extension UsersListViewModel {
+    enum Interaction: Equatable {
+        case none
+        case selectUser(User)
     }
 }
