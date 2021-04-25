@@ -26,13 +26,14 @@ class UsersListViewModelTests: XCTestCase {
 
     func testSelectUserPublishesInteraction() {
         let service = UsersListServiceSpy(users: mockUsers)
-        let viewModel = UsersListViewModel(usersService: service)
-
         let expectedInteractions: [UsersListViewModel.Interaction] = [.none, .selectUser(mockUsers[1])]
         var actualInteractions: [UsersListViewModel.Interaction] = []
+        var cancellable: AnyCancellable?
 
-        let c = viewModel.$interactions
-            .sink { actualInteractions.append($0) }
+        let viewModel = UsersListViewModel(usersService: service) { interactions in
+            cancellable = interactions
+                .sink { actualInteractions.append($0) }
+        }
 
         viewModel.select(user: UsersListViewModel.UserInfo(user: mockUsers[1]))
 

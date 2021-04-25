@@ -12,13 +12,16 @@ final class UsersListViewModel: ObservableObject {
     @Published var users: [UserInfo] = []
     @Published var error: Error?
 
-    @Published var interactions: UsersListViewModel.Interaction = .none
+    @Published private var interactions: UsersListViewModel.Interaction = .none
 
     @Published private var userEntities: [User] = []
 
     private let usersService: UsersListService
 
-    init(usersService: UsersListService) {
+    init(
+        usersService: UsersListService,
+        interactionsHandler: ((AnyPublisher<Interaction, Never>) -> Void)? = nil
+    ) {
         self.usersService = usersService
 
         self.usersService.users
@@ -31,6 +34,8 @@ final class UsersListViewModel: ObservableObject {
         $userEntities
             .map { $0.map(UserInfo.init) }
             .assign(to: &$users)
+
+        interactionsHandler?($interactions.eraseToAnyPublisher())
     }
 
     func select(user: UserInfo) {

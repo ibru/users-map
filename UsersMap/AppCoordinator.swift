@@ -19,18 +19,25 @@ final class AppCoordinator {
         self.window = window
     }
 
+    private lazy var rootViewController = ContainerViewController.create(
+        withMapController: createUsersMapViewController(),
+        listController: createUsersListViewController()
+    )
+
     private lazy var usersListViewModel: UsersListViewModel = {
-        let viewModel = UsersListViewModel(usersService: usersListService)
+        let viewModel = UsersListViewModel(usersService: usersListService) { [weak self] interactions in
+            guard let self = self else { return }
 
-        viewModel.$interactions
-            .sink { [weak self] in
-                switch $0 {
-                case .none: break
-                case .selectUser(let user): self?.presentDetailFor(user: user)
+            interactions
+                .sink { [weak self] in
+                    switch $0 {
+                    case .none: break
+                    case .selectUser(let user): self?.presentDetailFor(user: user)
+                    }
                 }
-            }
-            .store(in: &cancellables)
-
+                .store(in: &self.cancellables)
+        }
+        
         return viewModel
     }()
 
@@ -41,16 +48,20 @@ final class AppCoordinator {
 
 extension AppCoordinator: Coordinator {
     func start() {
-        let containerVC = ContainerViewController.create(
-            withMapController: createUsersMapViewController(),
-            listController: createUsersListViewController()
-        )
-
-        window.rootViewController = containerVC
+        window.rootViewController = rootViewController
     }
 
     func presentDetailFor(user: User) {
+        let viewController = createUserDetailViewController(for: user)
 
+        viewController.preferredContentSize = .init(width: window.bounds.width, height: 546)
+        viewController.modalPresentationStyle = .custom
+        viewController.transitioningDelegate = UserDetailViewController.TransitioningDelegate.modal(
+            from: rootViewController,
+            to: viewController
+        )
+
+        rootViewController.present(viewController, animated: true)
     }
 }
 
@@ -61,6 +72,10 @@ extension AppCoordinator {
 
     func createUsersListViewController() -> UsersListViewController {
         UsersListViewController.create(withViewModel: usersListViewModel)
+    }
+
+    func createUserDetailViewController(for user: User) -> UserDetailViewController {
+        UserDetailViewController.create(withViewModel: "not implemented yet")
     }
 }
 
