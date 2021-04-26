@@ -44,7 +44,7 @@ extension User {
         lastName = userResponse.name.last
         email = userResponse.email
         username = userResponse.login.username
-        avatarURL = userResponse.picture.thumbnail
+        avatarURL = userResponse.picture.medium
         location = .init(
             latitude: Double(userResponse.location.coordinates.latitude)!,
             longitude: Double(userResponse.location.coordinates.longitude)!

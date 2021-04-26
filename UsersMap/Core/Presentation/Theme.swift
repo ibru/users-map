@@ -73,7 +73,7 @@ extension FontTheme {
             titleFont: { UIFont(name: "CircularStd-Bold", size: 24)! },
             headlineFont: { UIFont(name: "CircularStd-Book", size: 17)! },
             headlineBolderFont: { UIFont(name: "CircularStd-Medium", size: 17)! },
-            captionFont: { UIFont(name: "CircularStd-Book", size: 15)! },
+            captionFont: { UIFont(name: "CircularStd-Book", size: 12)! },
             footnoteFont: { UIFont(name: "CircularStd-Book", size: 12)! }
         )
     }

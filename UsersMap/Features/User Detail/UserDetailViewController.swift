@@ -58,8 +58,7 @@ class UserDetailViewController: UIViewController {
         viewModel.$imageURL
             .sink { [weak self] urlString in
                 if let urlString = urlString {
-                    // load image using https://github.com/SDWebImage/SDWebImage
-                    //avatarImageView.sd_setImage(with: URL(string: urlString), placeholderImage: UIImage(named: "placeholder.png"))
+                    self?.avatarImageView.sd_setImage(with: URL(string: urlString), completed: nil)
                 } else {
                     self?.avatarImageView.backgroundColor = UIColor.gray // TOOD: set some default "unknown" image
                 }

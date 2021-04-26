@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class UserInfoCell: UICollectionViewCell {
 
@@ -25,8 +26,7 @@ final class UserInfoCell: UICollectionViewCell {
 
     func configure(with userInfo: UsersListViewModel.UserInfo) {
         if let imageURL = userInfo.avatarImageURL {
-            // load image using https://github.com/SDWebImage/SDWebImage
-            //avatarView.sd_setImage(with: URL(string: "http://www.domain.com/path/to/image.jpg"), placeholderImage: UIImage(named: "placeholder.png"))
+            avatarView.sd_setImage(with: imageURL, completed: nil)
         } else {
             avatarView.backgroundColor = UIColor.gray // TOOD: set some default "unknown" image
         }

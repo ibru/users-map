@@ -22,10 +22,7 @@ final class ContainerViewController: UIViewController {
     override func loadView() {
         super.loadView()
 
-        switchContentView.layer.cornerRadius = 10
-        switchContentView.layer.masksToBounds = true
-        switchContentView.layer.shadowColor = UIColor.blue.withAlphaComponent(0.6).cgColor
-        switchContentView.layer.shadowOffset = .init(width: 3, height: 3)
+        switchContentView.makeRoundedAndShadowed()
     }
 
     override func viewDidLoad() {
@@ -42,6 +39,8 @@ final class ContainerViewController: UIViewController {
         case .list: showList()
         }
     }
+
+
 }
 
 extension ContainerViewController {
@@ -88,21 +87,5 @@ extension ContainerViewController {
     private func set(mapController: UIViewController, listController: UIViewController) {
         self.mapController = mapController
         self.listController = listController
-    }
-}
-
-extension UIViewController {
-    func add(_ child: UIViewController, to view: UIView) {
-        addChild(child)
-        view.addSubview(child.view)
-        child.didMove(toParent: self)
-    }
-
-    func remove() {
-        guard parent != nil else { return }
-
-        willMove(toParent: nil)
-        view.removeFromSuperview()
-        removeFromParent()
     }
 }

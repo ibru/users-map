@@ -41,7 +41,7 @@ final class AppCoordinator {
         return viewModel
     }()
 
-    private let usersCountPublisher = CurrentValueSubject<Int, Never>(5) // TODO: this is temporary only
+    private let usersCountPublisher = CurrentValueSubject<Int, Never>(50) // TODO: this is temporary only
     private lazy var usersListService: UsersListService = {
         RandomUsersListService(
             usersCountPublisher: usersCountPublisher.eraseToAnyPublisher(),

@@ -39,7 +39,7 @@ class UserDTOTests: XCTestCase {
         XCTAssertEqual(user.id, userDTO.login.uuid)
         XCTAssertEqual(user.firstName, userDTO.name.first)
         XCTAssertEqual(user.lastName, userDTO.name.last)
-        XCTAssertEqual(user.avatarURL, userDTO.picture.thumbnail)
+        XCTAssertEqual(user.avatarURL, userDTO.picture.medium)
         XCTAssertEqual(user.email, userDTO.email)
         XCTAssertEqual(user.username, userDTO.login.username)
         XCTAssertEqual(user.location.latitude, Double(userDTO.location.coordinates.latitude))
