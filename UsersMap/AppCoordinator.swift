@@ -75,7 +75,7 @@ extension AppCoordinator {
     }
 
     func createUserDetailViewController(for user: User) -> UserDetailViewController {
-        UserDetailViewController.create(withViewModel: "not implemented yet")
+        UserDetailViewController.create(withViewModel: UserDetailViewViewModel(userDetailService: user))
     }
 }
 
@@ -89,5 +89,13 @@ extension User {
             .init(id: "id1", firstName: "Debra", lastName: "Debra", email: "debra@wade", username: "ebravade", avatarURL: nil, location: .init(latitude: 1, longitude: 1)),
             .init(id: "id2", firstName: "Dwight", lastName: "King", email: "debra@wade", username: "ebravade", avatarURL: nil, location: .init(latitude: 1, longitude: 1))
         ]
+    }
+}
+
+extension User: UserDetailService {
+    public var user: AnyPublisher<User, Error> {
+        Just(self)
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
     }
 }

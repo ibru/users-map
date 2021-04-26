@@ -26,6 +26,12 @@
 		49563FA52633E607007EA41D /* PopoverPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49563FA42633E607007EA41D /* PopoverPresentationViewController.swift */; };
 		49563FA92633EEB5007EA41D /* UIViewController+TransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49563FA82633EEB5007EA41D /* UIViewController+TransitioningDelegate.swift */; };
 		49563FAF2633EF18007EA41D /* PopoverPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49563FAE2633EF18007EA41D /* PopoverPresentationAnimator.swift */; };
+		49563FB526353AC9007EA41D /* UserDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49563FB426353AC9007EA41D /* UserDetailViewViewModel.swift */; };
+		49F8A9E5263689C6004E37F4 /* CircularStd-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F8A9E4263689C6004E37F4 /* CircularStd-Bold.ttf */; };
+		49F8A9EB263689DA004E37F4 /* CircularStd-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F8A9EA263689DA004E37F4 /* CircularStd-Book.ttf */; };
+		49F8A9EF263689EC004E37F4 /* CircularStd-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F8A9EE263689EC004E37F4 /* CircularStd-Medium.ttf */; };
+		49F8A9F326368B12004E37F4 /* UserDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8A9F226368B12004E37F4 /* UserDetailService.swift */; };
+		49F8A9F726368B44004E37F4 /* UserDetailViewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8A9F626368B44004E37F4 /* UserDetailViewViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +68,12 @@
 		49563FA42633E607007EA41D /* PopoverPresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverPresentationViewController.swift; sourceTree = "<group>"; };
 		49563FA82633EEB5007EA41D /* UIViewController+TransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+TransitioningDelegate.swift"; sourceTree = "<group>"; };
 		49563FAE2633EF18007EA41D /* PopoverPresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverPresentationAnimator.swift; sourceTree = "<group>"; };
+		49563FB426353AC9007EA41D /* UserDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewViewModel.swift; sourceTree = "<group>"; };
+		49F8A9E4263689C6004E37F4 /* CircularStd-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Bold.ttf"; sourceTree = "<group>"; };
+		49F8A9EA263689DA004E37F4 /* CircularStd-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Book.ttf"; sourceTree = "<group>"; };
+		49F8A9EE263689EC004E37F4 /* CircularStd-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Medium.ttf"; sourceTree = "<group>"; };
+		49F8A9F226368B12004E37F4 /* UserDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailService.swift; sourceTree = "<group>"; };
+		49F8A9F626368B44004E37F4 /* UserDetailViewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +123,9 @@
 				49563F612632F331007EA41D /* Core */,
 				492E5EE22632CC8C009DA42E /* Assets.xcassets */,
 				492E5EE42632CC8C009DA42E /* LaunchScreen.storyboard */,
+				49F8A9EA263689DA004E37F4 /* CircularStd-Book.ttf */,
+				49F8A9E4263689C6004E37F4 /* CircularStd-Bold.ttf */,
+				49F8A9EE263689EC004E37F4 /* CircularStd-Medium.ttf */,
 				492E5EE72632CC8C009DA42E /* Info.plist */,
 			);
 			path = UsersMap;
@@ -121,6 +136,7 @@
 			children = (
 				492E5EF22632CC8D009DA42E /* Info.plist */,
 				49563F822632F6CE007EA41D /* UsersListViewModelTests.swift */,
+				49F8A9F626368B44004E37F4 /* UserDetailViewViewModelTests.swift */,
 			);
 			path = UsersMapTests;
 			sourceTree = "<group>";
@@ -185,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				49563F7A2632F5DD007EA41D /* UsersListService.swift */,
+				49F8A9F226368B12004E37F4 /* UserDetailService.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -211,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				49563F8C2633E215007EA41D /* UserDetailViewController.swift */,
+				49563FB426353AC9007EA41D /* UserDetailViewViewModel.swift */,
 			);
 			path = "User Detail";
 			sourceTree = "<group>";
@@ -296,6 +314,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F8A9EF263689EC004E37F4 /* CircularStd-Medium.ttf in Resources */,
+				49F8A9EB263689DA004E37F4 /* CircularStd-Book.ttf in Resources */,
+				49F8A9E5263689C6004E37F4 /* CircularStd-Bold.ttf in Resources */,
 				492E5EE62632CC8C009DA42E /* LaunchScreen.storyboard in Resources */,
 				492E5EE32632CC8C009DA42E /* Assets.xcassets in Resources */,
 				492E5EE12632CC8A009DA42E /* Main.storyboard in Resources */,
@@ -317,10 +338,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				49563F432632D769007EA41D /* UserInfoCell.swift in Sources */,
+				49563FB526353AC9007EA41D /* UserDetailViewViewModel.swift in Sources */,
 				492E5EDA2632CC8A009DA42E /* AppDelegate.swift in Sources */,
 				49563F8D2633E215007EA41D /* UserDetailViewController.swift in Sources */,
 				49563FA92633EEB5007EA41D /* UIViewController+TransitioningDelegate.swift in Sources */,
 				49563F342632D4D3007EA41D /* ContainerViewController.swift in Sources */,
+				49F8A9F326368B12004E37F4 /* UserDetailService.swift in Sources */,
 				49563F392632D4E4007EA41D /* UsersMapViewController.swift in Sources */,
 				49563F642632F3C3007EA41D /* UsersListViewModel.swift in Sources */,
 				49563FA52633E607007EA41D /* PopoverPresentationViewController.swift in Sources */,
@@ -339,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49563F832632F6CE007EA41D /* UsersListViewModelTests.swift in Sources */,
+				49F8A9F726368B44004E37F4 /* UserDetailViewViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,7 +17,7 @@ extension UIViewController {
 
         static func modal(from presentingVC: UIViewController, to presentedVC: UIViewController) -> TransitioningDelegate {
 
-            let delegate = TransitioningDelegate(presentedContentSize: CGSize(width: 375, height: 500))
+            let delegate = TransitioningDelegate(presentedContentSize: presentedVC.preferredContentSize)
             currentTransitioningDelegate = delegate
 
             return delegate
