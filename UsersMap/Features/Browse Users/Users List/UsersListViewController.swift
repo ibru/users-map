@@ -10,17 +10,24 @@ import Combine
 
 final class UsersListViewController: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+
     private(set) var viewModel: UsersListViewModel!
 
     private var cancellables: Set<AnyCancellable> = []
 
-    @IBOutlet weak var collectionView: UICollectionView!
+    override func loadView() {
+        super.loadView()
+        collectionView.dataSource = self
+        collectionView.delegate = self
+
+        titleLabel.font = Theme.current.fontTheme.navigationTitleFont()
+        titleLabel.textColor = Theme.current.colorTheme.primaryFontColor()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        collectionView.dataSource = self
-        collectionView.delegate = self
 
         viewModel.$users
             .sink { [weak self] _ in
@@ -29,8 +36,8 @@ final class UsersListViewController: UIViewController {
             .store(in: &cancellables)
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize = CGSize(width: view.bounds.width, height: 60)
     }

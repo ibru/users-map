@@ -13,6 +13,16 @@ final class UserInfoCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nicknameLabel: UILabel!
 
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        avatarView.layer.cornerRadius = 27
+
+        Theme.current.style(headlineBolderLabel: nameLabel)
+        Theme.current.style(captionLabel: nicknameLabel)
+    }
+
     func configure(with userInfo: UsersListViewModel.UserInfo) {
         if let imageURL = userInfo.avatarImageURL {
             // load image using https://github.com/SDWebImage/SDWebImage

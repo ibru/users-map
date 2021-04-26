@@ -32,6 +32,8 @@
 		49F8A9EF263689EC004E37F4 /* CircularStd-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F8A9EE263689EC004E37F4 /* CircularStd-Medium.ttf */; };
 		49F8A9F326368B12004E37F4 /* UserDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8A9F226368B12004E37F4 /* UserDetailService.swift */; };
 		49F8A9F726368B44004E37F4 /* UserDetailViewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8A9F626368B44004E37F4 /* UserDetailViewViewModelTests.swift */; };
+		49F8A9FB2636BDBE004E37F4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8A9FA2636BDBE004E37F4 /* Theme.swift */; };
+		49F8A9FF2636C137004E37F4 /* CircularStd-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F8A9FE2636C137004E37F4 /* CircularStd-Black.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		49F8A9EE263689EC004E37F4 /* CircularStd-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Medium.ttf"; sourceTree = "<group>"; };
 		49F8A9F226368B12004E37F4 /* UserDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailService.swift; sourceTree = "<group>"; };
 		49F8A9F626368B44004E37F4 /* UserDetailViewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewViewModelTests.swift; sourceTree = "<group>"; };
+		49F8A9FA2636BDBE004E37F4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		49F8A9FE2636C137004E37F4 /* CircularStd-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Black.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,7 @@
 				49F8A9EA263689DA004E37F4 /* CircularStd-Book.ttf */,
 				49F8A9E4263689C6004E37F4 /* CircularStd-Bold.ttf */,
 				49F8A9EE263689EC004E37F4 /* CircularStd-Medium.ttf */,
+				49F8A9FE2636C137004E37F4 /* CircularStd-Black.ttf */,
 				492E5EE72632CC8C009DA42E /* Info.plist */,
 			);
 			path = UsersMap;
@@ -220,6 +225,7 @@
 				49563FA42633E607007EA41D /* PopoverPresentationViewController.swift */,
 				49563FAE2633EF18007EA41D /* PopoverPresentationAnimator.swift */,
 				49563FA82633EEB5007EA41D /* UIViewController+TransitioningDelegate.swift */,
+				49F8A9FA2636BDBE004E37F4 /* Theme.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -319,6 +325,7 @@
 				49F8A9E5263689C6004E37F4 /* CircularStd-Bold.ttf in Resources */,
 				492E5EE62632CC8C009DA42E /* LaunchScreen.storyboard in Resources */,
 				492E5EE32632CC8C009DA42E /* Assets.xcassets in Resources */,
+				49F8A9FF2636C137004E37F4 /* CircularStd-Black.ttf in Resources */,
 				492E5EE12632CC8A009DA42E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,6 +353,7 @@
 				49F8A9F326368B12004E37F4 /* UserDetailService.swift in Sources */,
 				49563F392632D4E4007EA41D /* UsersMapViewController.swift in Sources */,
 				49563F642632F3C3007EA41D /* UsersListViewModel.swift in Sources */,
+				49F8A9FB2636BDBE004E37F4 /* Theme.swift in Sources */,
 				49563FA52633E607007EA41D /* PopoverPresentationViewController.swift in Sources */,
 				49563F5A2632DE4B007EA41D /* AppCoordinator.swift in Sources */,
 				49563FAF2633EF18007EA41D /* PopoverPresentationAnimator.swift in Sources */,
