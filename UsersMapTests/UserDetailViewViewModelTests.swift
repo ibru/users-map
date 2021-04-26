@@ -10,7 +10,6 @@ import XCTest
 import Combine
 
 class UserDetailViewViewModelTests: XCTestCase {
-
     func testFullNameShouldBeTakenFromUsersFirstAndLastName() {
         let service = UserDetailServiceStub(user: .mock(id: "1", firstName: "John", lastName: "Doe"))
         let viewModel = UserDetailViewViewModel(userDetailService: service)

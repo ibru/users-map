@@ -41,8 +41,12 @@ final class AppCoordinator {
         return viewModel
     }()
 
+    private let usersCountPublisher = CurrentValueSubject<Int, Never>(5) // TODO: this is temporary only
     private lazy var usersListService: UsersListService = {
-        MockUsersListService(users: User.mocks)
+        RandomUsersListService(
+            usersCountPublisher: usersCountPublisher.eraseToAnyPublisher(),
+            usersLoader: RandomUsersLoader(responseProvider: URLSession.shared)
+        )
     }()
 }
 

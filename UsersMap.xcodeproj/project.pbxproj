@@ -34,6 +34,16 @@
 		49F8A9F726368B44004E37F4 /* UserDetailViewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8A9F626368B44004E37F4 /* UserDetailViewViewModelTests.swift */; };
 		49F8A9FB2636BDBE004E37F4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8A9FA2636BDBE004E37F4 /* Theme.swift */; };
 		49F8A9FF2636C137004E37F4 /* CircularStd-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F8A9FE2636C137004E37F4 /* CircularStd-Black.ttf */; };
+		49F8AA042636C3B1004E37F4 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA032636C3B1004E37F4 /* Endpoints.swift */; };
+		49F8AA092636C515004E37F4 /* ResponseDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA082636C515004E37F4 /* ResponseDataProviding.swift */; };
+		49F8AA0F2636CDBF004E37F4 /* RandomUsersListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA0E2636CDBF004E37F4 /* RandomUsersListServiceTests.swift */; };
+		49F8AA132636CF9B004E37F4 /* UserDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA122636CF9B004E37F4 /* UserDTOTests.swift */; };
+		49F8AA172636D10F004E37F4 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA162636D10F004E37F4 /* UserDTO.swift */; };
+		49F8AA1B2636D867004E37F4 /* RandomUsersListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA1A2636D867004E37F4 /* RandomUsersListService.swift */; };
+		49F8AA1F2636DC10004E37F4 /* ServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA1E2636DC10004E37F4 /* ServerConfiguration.swift */; };
+		49F8AA262636DD08004E37F4 /* RandomUsersLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA252636DD08004E37F4 /* RandomUsersLoader.swift */; };
+		49F8AA2C2636DDBC004E37F4 /* RandomUsersLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA2B2636DDBC004E37F4 /* RandomUsersLoaderTests.swift */; };
+		49F8AA302636DF5C004E37F4 /* UsersEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA2F2636DF5B004E37F4 /* UsersEndpointTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +88,16 @@
 		49F8A9F626368B44004E37F4 /* UserDetailViewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewViewModelTests.swift; sourceTree = "<group>"; };
 		49F8A9FA2636BDBE004E37F4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		49F8A9FE2636C137004E37F4 /* CircularStd-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Black.ttf"; sourceTree = "<group>"; };
+		49F8AA032636C3B1004E37F4 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		49F8AA082636C515004E37F4 /* ResponseDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDataProviding.swift; sourceTree = "<group>"; };
+		49F8AA0E2636CDBF004E37F4 /* RandomUsersListServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersListServiceTests.swift; sourceTree = "<group>"; };
+		49F8AA122636CF9B004E37F4 /* UserDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTOTests.swift; sourceTree = "<group>"; };
+		49F8AA162636D10F004E37F4 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		49F8AA1A2636D867004E37F4 /* RandomUsersListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersListService.swift; sourceTree = "<group>"; };
+		49F8AA1E2636DC10004E37F4 /* ServerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConfiguration.swift; sourceTree = "<group>"; };
+		49F8AA252636DD08004E37F4 /* RandomUsersLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersLoader.swift; sourceTree = "<group>"; };
+		49F8AA2B2636DDBC004E37F4 /* RandomUsersLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersLoaderTests.swift; sourceTree = "<group>"; };
+		49F8AA2F2636DF5B004E37F4 /* UsersEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersEndpointTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +162,10 @@
 				492E5EF22632CC8D009DA42E /* Info.plist */,
 				49563F822632F6CE007EA41D /* UsersListViewModelTests.swift */,
 				49F8A9F626368B44004E37F4 /* UserDetailViewViewModelTests.swift */,
+				49F8AA0E2636CDBF004E37F4 /* RandomUsersListServiceTests.swift */,
+				49F8AA122636CF9B004E37F4 /* UserDTOTests.swift */,
+				49F8AA2B2636DDBC004E37F4 /* RandomUsersLoaderTests.swift */,
+				49F8AA2F2636DF5B004E37F4 /* UsersEndpointTests.swift */,
 			);
 			path = UsersMapTests;
 			sourceTree = "<group>";
@@ -175,6 +199,7 @@
 		49563F612632F331007EA41D /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				49F8AA022636C29C004E37F4 /* Networking */,
 				49563F712632F461007EA41D /* Presentation */,
 				49563F6B2632F3F4007EA41D /* Entities */,
 				49563F6F2632F450007EA41D /* Domain */,
@@ -214,6 +239,7 @@
 		49563F702632F455007EA41D /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				49F8AA1A2636D867004E37F4 /* RandomUsersListService.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -237,6 +263,34 @@
 				49563FB426353AC9007EA41D /* UserDetailViewViewModel.swift */,
 			);
 			path = "User Detail";
+			sourceTree = "<group>";
+		};
+		49F8AA022636C29C004E37F4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				49F8AA1E2636DC10004E37F4 /* ServerConfiguration.swift */,
+				49F8AA032636C3B1004E37F4 /* Endpoints.swift */,
+				49F8AA082636C515004E37F4 /* ResponseDataProviding.swift */,
+				49F8AA072636C409004E37F4 /* DTOs */,
+				49F8AA242636DCE2004E37F4 /* Loaders */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		49F8AA072636C409004E37F4 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				49F8AA162636D10F004E37F4 /* UserDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		49F8AA242636DCE2004E37F4 /* Loaders */ = {
+			isa = PBXGroup;
+			children = (
+				49F8AA252636DD08004E37F4 /* RandomUsersLoader.swift */,
+			);
+			path = Loaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,15 +403,21 @@
 				492E5EDA2632CC8A009DA42E /* AppDelegate.swift in Sources */,
 				49563F8D2633E215007EA41D /* UserDetailViewController.swift in Sources */,
 				49563FA92633EEB5007EA41D /* UIViewController+TransitioningDelegate.swift in Sources */,
+				49F8AA092636C515004E37F4 /* ResponseDataProviding.swift in Sources */,
+				49F8AA1F2636DC10004E37F4 /* ServerConfiguration.swift in Sources */,
 				49563F342632D4D3007EA41D /* ContainerViewController.swift in Sources */,
 				49F8A9F326368B12004E37F4 /* UserDetailService.swift in Sources */,
 				49563F392632D4E4007EA41D /* UsersMapViewController.swift in Sources */,
 				49563F642632F3C3007EA41D /* UsersListViewModel.swift in Sources */,
 				49F8A9FB2636BDBE004E37F4 /* Theme.swift in Sources */,
+				49F8AA262636DD08004E37F4 /* RandomUsersLoader.swift in Sources */,
 				49563FA52633E607007EA41D /* PopoverPresentationViewController.swift in Sources */,
+				49F8AA172636D10F004E37F4 /* UserDTO.swift in Sources */,
 				49563F5A2632DE4B007EA41D /* AppCoordinator.swift in Sources */,
+				49F8AA042636C3B1004E37F4 /* Endpoints.swift in Sources */,
 				49563FAF2633EF18007EA41D /* PopoverPresentationAnimator.swift in Sources */,
 				492E5EDC2632CC8A009DA42E /* SceneDelegate.swift in Sources */,
+				49F8AA1B2636D867004E37F4 /* RandomUsersListService.swift in Sources */,
 				49563F3E2632D4F0007EA41D /* UsersListViewController.swift in Sources */,
 				49563F732632F4D4007EA41D /* User.swift in Sources */,
 				49563F7B2632F5DD007EA41D /* UsersListService.swift in Sources */,
@@ -370,7 +430,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				49563F832632F6CE007EA41D /* UsersListViewModelTests.swift in Sources */,
+				49F8AA2C2636DDBC004E37F4 /* RandomUsersLoaderTests.swift in Sources */,
 				49F8A9F726368B44004E37F4 /* UserDetailViewViewModelTests.swift in Sources */,
+				49F8AA302636DF5C004E37F4 /* UsersEndpointTests.swift in Sources */,
+				49F8AA132636CF9B004E37F4 /* UserDTOTests.swift in Sources */,
+				49F8AA0F2636CDBF004E37F4 /* RandomUsersListServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
