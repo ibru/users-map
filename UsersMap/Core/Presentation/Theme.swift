@@ -41,6 +41,7 @@ struct ColorTheme {
     let primaryFontColor: () -> UIColor
     let secondaryFontColor: () -> UIColor
     let lightGray: () -> UIColor
+    let controlsTint: () -> UIColor
 }
 
 extension ColorTheme {
@@ -48,7 +49,8 @@ extension ColorTheme {
         .init(
             primaryFontColor: { UIColor(red: 0.165, green: 0.18, blue: 0.263, alpha: 1) },
             secondaryFontColor: { UIColor(red: 0.742, green: 0.742, blue: 0.742, alpha: 1) },
-            lightGray: { UIColor(red: 0.964, green: 0.964, blue: 0.964, alpha: 1) }
+            lightGray: { UIColor(red: 0.964, green: 0.964, blue: 0.964, alpha: 1) },
+            controlsTint: { UIColor(red: 0.337, green: 0.149, blue: 0.957, alpha: 1) }
         )
     }
 }
@@ -60,6 +62,7 @@ struct FontTheme {
     let headlineBolderFont: () -> UIFont
     let captionFont: () -> UIFont
     let footnoteFont: () -> UIFont
+    let usersCountFont: () -> UIFont
 }
 
 extension Theme {
@@ -74,7 +77,8 @@ extension FontTheme {
             headlineFont: { UIFont(name: "CircularStd-Book", size: 17)! },
             headlineBolderFont: { UIFont(name: "CircularStd-Medium", size: 17)! },
             captionFont: { UIFont(name: "CircularStd-Book", size: 12)! },
-            footnoteFont: { UIFont(name: "CircularStd-Book", size: 12)! }
+            footnoteFont: { UIFont(name: "CircularStd-Book", size: 12)! },
+            usersCountFont: { UIFont(name: "CircularStd-Medium", size: 24)! }
         )
     }
 }

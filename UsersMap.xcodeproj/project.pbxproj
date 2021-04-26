@@ -47,6 +47,8 @@
 		49F8AA352636E1A2004E37F4 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 49F8AA342636E1A2004E37F4 /* SDWebImage */; };
 		49F8AA3B2636E53C004E37F4 /* UIViewController+child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA3A2636E53C004E37F4 /* UIViewController+child.swift */; };
 		49F8AA3F2636E566004E37F4 /* UIView+dropShaddow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA3E2636E566004E37F4 /* UIView+dropShaddow.swift */; };
+		49F8AA482636F3C4004E37F4 /* UsersCountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA472636F3C4004E37F4 /* UsersCountViewModel.swift */; };
+		49F8AA4E2636F798004E37F4 /* UsersCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA4D2636F797004E37F4 /* UsersCountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,8 @@
 		49F8AA2F2636DF5B004E37F4 /* UsersEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersEndpointTests.swift; sourceTree = "<group>"; };
 		49F8AA3A2636E53C004E37F4 /* UIViewController+child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+child.swift"; sourceTree = "<group>"; };
 		49F8AA3E2636E566004E37F4 /* UIView+dropShaddow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+dropShaddow.swift"; sourceTree = "<group>"; };
+		49F8AA472636F3C4004E37F4 /* UsersCountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCountViewModel.swift; sourceTree = "<group>"; };
+		49F8AA4D2636F797004E37F4 /* UsersCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +183,7 @@
 		49563F5E2632F2DD007EA41D /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				49F8AA462636F3B4004E37F4 /* Users Count */,
 				49563F622632F36C007EA41D /* Browse Users */,
 				49563F8B2633E1F8007EA41D /* User Detail */,
 			);
@@ -299,6 +304,15 @@
 				49F8AA252636DD08004E37F4 /* RandomUsersLoader.swift */,
 			);
 			path = Loaders;
+			sourceTree = "<group>";
+		};
+		49F8AA462636F3B4004E37F4 /* Users Count */ = {
+			isa = PBXGroup;
+			children = (
+				49F8AA4D2636F797004E37F4 /* UsersCountViewController.swift */,
+				49F8AA472636F3C4004E37F4 /* UsersCountViewModel.swift */,
+			);
+			path = "Users Count";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,9 +437,11 @@
 				49F8AA3F2636E566004E37F4 /* UIView+dropShaddow.swift in Sources */,
 				49563F342632D4D3007EA41D /* ContainerViewController.swift in Sources */,
 				49F8A9F326368B12004E37F4 /* UserDetailService.swift in Sources */,
+				49F8AA4E2636F798004E37F4 /* UsersCountViewController.swift in Sources */,
 				49563F392632D4E4007EA41D /* UsersMapViewController.swift in Sources */,
 				49563F642632F3C3007EA41D /* UsersListViewModel.swift in Sources */,
 				49F8A9FB2636BDBE004E37F4 /* Theme.swift in Sources */,
+				49F8AA482636F3C4004E37F4 /* UsersCountViewModel.swift in Sources */,
 				49F8AA262636DD08004E37F4 /* RandomUsersLoader.swift in Sources */,
 				49563FA52633E607007EA41D /* PopoverPresentationViewController.swift in Sources */,
 				49F8AA172636D10F004E37F4 /* UserDTO.swift in Sources */,

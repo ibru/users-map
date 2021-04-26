@@ -25,6 +25,7 @@ final class UsersListViewModel: ObservableObject {
         self.usersService = usersService
 
         self.usersService.users
+            .receive(on: DispatchQueue.main)
             .catch { error -> AnyPublisher<[User], Never>in
                 self.error = error
                 return Just([]).eraseToAnyPublisher()

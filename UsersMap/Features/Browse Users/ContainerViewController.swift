@@ -15,6 +15,7 @@ final class ContainerViewController: UIViewController {
     @IBOutlet weak var contentSegmentedControl: UISegmentedControl!
     @IBOutlet weak var switchContentView: UIView!
     @IBOutlet weak var contentContainerView: UIView!
+    @IBOutlet weak var countButton: UIButton!
 
     private var mapController: UIViewController!
     private var listController: UIViewController!
@@ -23,6 +24,10 @@ final class ContainerViewController: UIViewController {
         super.loadView()
 
         switchContentView.makeRoundedAndShadowed()
+
+        countButton.titleLabel?.font = Theme.current.fontTheme.usersCountFont()
+        countButton.setTitleColor(Theme.current.colorTheme.primaryFontColor(), for: .normal)
+        countButton.makeRoundedAndShadowed(cornerRadius: 24)
     }
 
     override func viewDidLoad() {
@@ -40,6 +45,11 @@ final class ContainerViewController: UIViewController {
         }
     }
 
+    var onCountButtonTouched: (() -> Void)?
+
+    @IBAction func countButtonTouched(_ sender: UIButton) {
+        onCountButtonTouched?()
+    }
 
 }
 
@@ -77,10 +87,12 @@ extension ContainerViewController {
     static func create(
         from storyboard: UIStoryboard = .main,
         withMapController mapController: UIViewController,
-        listController: UIViewController
+        listController: UIViewController,
+        onCountButtonTouched: (() -> Void)? = nil // TODO: temporary solution, we should use ViewModel
     ) -> Self {
         let viewController = storyboard.instantiateViewController(withIdentifier: "ContainerViewController") as! Self
         viewController.set(mapController: mapController, listController: listController)
+        viewController.onCountButtonTouched = onCountButtonTouched
         return viewController
     }
 

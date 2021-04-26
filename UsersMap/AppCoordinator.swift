@@ -22,7 +22,9 @@ final class AppCoordinator {
     private lazy var rootViewController = ContainerViewController.create(
         withMapController: createUsersMapViewController(),
         listController: createUsersListViewController()
-    )
+    ) {
+        self.presentUsersCountPicker()
+    }
 
     private lazy var usersListViewModel: UsersListViewModel = {
         let viewModel = UsersListViewModel(usersService: usersListService) { [weak self] interactions in
@@ -41,10 +43,29 @@ final class AppCoordinator {
         return viewModel
     }()
 
-    private let usersCountPublisher = CurrentValueSubject<Int, Never>(50) // TODO: this is temporary only
+    private lazy var usersCountViewModel: UsersCountViewModel = {
+        let viewModel = UsersCountViewModel { interactions in
+            interactions
+                .compactMap {
+                    if case let .chooseCount(count) = $0 {
+                        return count
+                    }
+                    return nil
+                }
+                .assign(to: &self.$usersCountPublisher)
+        }
+        $usersCountPublisher
+            .assign(to: \.initialCount, on: viewModel)
+            .store(in: &cancellables)
+
+        return viewModel
+    }()
+
+    @Published private var usersCountPublisher: Int = 5
+
     private lazy var usersListService: UsersListService = {
         RandomUsersListService(
-            usersCountPublisher: usersCountPublisher.eraseToAnyPublisher(),
+            usersCountPublisher: $usersCountPublisher.eraseToAnyPublisher(),
             usersLoader: RandomUsersLoader(responseProvider: URLSession.shared)
         )
     }()
@@ -59,6 +80,19 @@ extension AppCoordinator: Coordinator {
         let viewController = createUserDetailViewController(for: user)
 
         viewController.preferredContentSize = .init(width: window.bounds.width, height: 546)
+        viewController.modalPresentationStyle = .custom
+        viewController.transitioningDelegate = UserDetailViewController.TransitioningDelegate.modal(
+            from: rootViewController,
+            to: viewController
+        )
+
+        rootViewController.present(viewController, animated: true)
+    }
+
+    func presentUsersCountPicker() {
+        let viewController = UsersCountViewController.create(withViewModel: usersCountViewModel)
+
+        viewController.preferredContentSize = .init(width: window.bounds.width, height: 440)
         viewController.modalPresentationStyle = .custom
         viewController.transitioningDelegate = UserDetailViewController.TransitioningDelegate.modal(
             from: rootViewController,

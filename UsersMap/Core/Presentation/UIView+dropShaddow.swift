@@ -8,10 +8,10 @@
 import UIKit
 
 extension UIView {
-    func makeRoundedAndShadowed() {
+    func makeRoundedAndShadowed(cornerRadius: CGFloat = 10) {
         let shadowLayer = CAShapeLayer()
 
-        self.layer.cornerRadius = 10
+        self.layer.cornerRadius = cornerRadius
         shadowLayer.path = UIBezierPath(
             roundedRect: self.bounds,
             cornerRadius: self.layer.cornerRadius
