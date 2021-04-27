@@ -22,7 +22,7 @@ class RandomUsersListServiceTests: XCTestCase {
         let loader = UsersLoaderStub(users: expectedUsers)
 
         let service = RandomUsersListService(
-            usersCountPublisher: countPublisher.eraseToAnyPublisher(),
+            usersCountService: countPublisher.eraseToAnyPublisher(),
             usersLoader: loader
         )
 
@@ -40,14 +40,14 @@ class RandomUsersListServiceTests: XCTestCase {
         XCTAssertEqual(actualUsers.last?.username, expectedUsers[1].login.username)
     }
 
-    func testUsersShouldEmitNextElementWhenUsersCountPublisherSendsNextValue() {
+    func testUsersShouldEmitNextElementWhenUsersCountServiceSendsNextValue() {
         let expectedUsers: [UserDTO] = [.mock(id: "2", username: "user2")]
         var actualUsers: [User] = []
         let countPublisher = PassthroughSubject<Int, Never>()
 
         let loader = UsersLoaderStub()
         let service = RandomUsersListService(
-            usersCountPublisher: countPublisher.eraseToAnyPublisher(),
+            usersCountService: countPublisher.eraseToAnyPublisher(),
             usersLoader: loader
         )
 

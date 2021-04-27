@@ -13,31 +13,38 @@ class UsersListViewModelTests: XCTestCase {
     func testUsersLoadsUsigUsersListService() {
         let service = UsersListServiceSpy(users: mockUsers)
         let viewModel = UsersListViewModel(usersService: service)
-        let expectedUserNames = ["John Doe", "Jack Moore"]
-        var actualUserNames = [String]()
+        let exp = expectation(description: "Users changed")
 
         let c = viewModel.$users
+            .dropFirst()
             .map { $0.map { $0.fullName} }
-            .sink { actualUserNames = $0 }
+            .sink {
+                exp.fulfill()
+                XCTAssertEqual($0, ["John Doe", "Jack Moore"])
+            }
 
         XCTAssertTrue(service.usersCalled)
-        XCTAssertEqual(actualUserNames, expectedUserNames)
+        waitForExpectations(timeout: 0.1)
     }
 
     func testSelectUserPublishesInteraction() {
         let service = UsersListServiceSpy(users: mockUsers)
-        let expectedInteractions: [UsersListViewModel.Interaction] = [.none, .selectUser(mockUsers[1])]
-        var actualInteractions: [UsersListViewModel.Interaction] = []
         var cancellable: AnyCancellable?
+        let exp = expectation(description: "Interaction happened")
 
         let viewModel = UsersListViewModel(usersService: service) { interactions in
             cancellable = interactions
-                .sink { actualInteractions.append($0) }
+                .sink {
+                    if $0 == .selectUser(self.mockUsers[1]) {
+                        exp.fulfill()
+                    }
+                }
         }
 
-        viewModel.select(user: UsersListViewModel.UserInfo(user: mockUsers[1]))
-
-        XCTAssertEqual(actualInteractions, expectedInteractions)
+        DispatchQueue.main.async {
+            viewModel.select(user: UsersListViewModel.UserInfo(user: self.mockUsers[1]))
+        }
+        waitForExpectations(timeout: 0.1)
     }
 
     // TODO: add more tests
