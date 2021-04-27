@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 final class ContainerViewController: UIViewController {
+
+    var viewModel: ContainerViewModel!
+
     enum ContentSegment: Int {
         case map = 0, list
     }
@@ -20,12 +24,15 @@ final class ContainerViewController: UIViewController {
     private var mapController: UIViewController!
     private var listController: UIViewController!
 
+    private var cancellables = Set<AnyCancellable>()
+
     override func loadView() {
         super.loadView()
 
         switchContentView.makeRoundedAndShadowed()
 
         countButton.titleLabel?.font = Theme.current.fontTheme.usersCountFont()
+        countButton.titleLabel?.adjustsFontSizeToFitWidth = true
         countButton.setTitleColor(Theme.current.colorTheme.primaryFontColor(), for: .normal)
         countButton.makeRoundedAndShadowed(cornerRadius: 24)
     }
@@ -34,6 +41,14 @@ final class ContainerViewController: UIViewController {
         super.viewDidLoad()
 
         contentSegmentedControl.selectedSegmentIndex = ContentSegment.map.rawValue
+
+        viewModel
+            .$usersCount
+            .map(String.init)
+            .sink { [weak self] in
+                self?.countButton.setTitle("\($0)", for: .normal)
+            }
+            .store(in: &cancellables)
     }
 
     @IBAction func contentSegmentedControlValueChanged(_ sender: UISegmentedControl) {
@@ -45,10 +60,8 @@ final class ContainerViewController: UIViewController {
         }
     }
 
-    var onCountButtonTouched: (() -> Void)?
-
     @IBAction func countButtonTouched(_ sender: UIButton) {
-        onCountButtonTouched?()
+        viewModel.changeUsersCount()
     }
 
 }
@@ -88,11 +101,11 @@ extension ContainerViewController {
         from storyboard: UIStoryboard = .main,
         withMapController mapController: UIViewController,
         listController: UIViewController,
-        onCountButtonTouched: (() -> Void)? = nil // TODO: temporary solution, we should use ViewModel
+        viewModel: ContainerViewModel
     ) -> Self {
         let viewController = storyboard.instantiateViewController(withIdentifier: "ContainerViewController") as! Self
         viewController.set(mapController: mapController, listController: listController)
-        viewController.onCountButtonTouched = onCountButtonTouched
+        viewController.viewModel = viewModel
         return viewController
     }
 

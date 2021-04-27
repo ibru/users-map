@@ -1,5 +1,5 @@
 //
-//  UsersCountViewModel.swift
+//  ContainerViewModel.swift
 //  UsersMap
 //
 //  Created by Jiri Urbasek on 4/26/21.
@@ -8,10 +8,10 @@
 import Foundation
 import Combine
 
-final class UsersCountViewModel: ObservableObject {
+final class ContainerViewModel: ObservableObject {
 
-    @Published var initialCount: Int = 5
-    
+    @Published var usersCount: Int = 5
+
     private let usersCountService: UsersCountService
     @Published private var interactions: Interaction = .none
 
@@ -22,17 +22,17 @@ final class UsersCountViewModel: ObservableObject {
         self.usersCountService = usersCountService
         interactionsHandler?($interactions.eraseToAnyPublisher())
 
-        usersCountService.usersCount.assign(to: &$initialCount)
+        usersCountService.usersCount.assign(to: &$usersCount)
     }
 
-    func set(count: Int) {
-        interactions = .chooseCount(count)
+    func changeUsersCount() {
+        interactions = .selectCount
     }
 }
 
-extension UsersCountViewModel {
+extension ContainerViewModel {
     enum Interaction: Equatable {
         case none
-        case chooseCount(Int)
+        case selectCount
     }
 }

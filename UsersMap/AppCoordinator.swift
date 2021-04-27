@@ -21,54 +21,60 @@ final class AppCoordinator {
 
     private lazy var rootViewController = ContainerViewController.create(
         withMapController: createUsersMapViewController(),
-        listController: createUsersListViewController()
-    ) {
-        self.presentUsersCountPicker()
+        listController: createUsersListViewController(),
+        viewModel: containerVieModel
+    )
+
+    private lazy var containerVieModel = ContainerViewModel(usersCountService: usersCountService) { interactions in
+        interactions
+            .sink { [weak self] in
+                switch $0 {
+                case .none: break
+                case .selectCount: self?.presentUsersCountPicker()
+                }
+            }
+            .store(in: &self.cancellables)
     }
 
-    private lazy var usersListViewModel: UsersListViewModel = {
-        let viewModel = UsersListViewModel(usersService: usersListService) { [weak self] interactions in
-            guard let self = self else { return }
+    private lazy var usersListViewModel = UsersListViewModel(usersService: usersListService) { [weak self] interactions in
+        guard let self = self else { return }
 
-            interactions
-                .sink { [weak self] in
-                    switch $0 {
-                    case .none: break
-                    case .selectUser(let user): self?.presentDetailFor(user: user)
-                    }
+        interactions
+            .sink { [weak self] in
+                switch $0 {
+                case .none: break
+                case .selectUser(let user): self?.presentDetailFor(user: user)
                 }
-                .store(in: &self.cancellables)
-        }
-        
-        return viewModel
-    }()
+            }
+            .store(in: &self.cancellables)
+    }
 
-    private lazy var usersCountViewModel: UsersCountViewModel = {
-        let viewModel = UsersCountViewModel { interactions in
-            interactions
-                .compactMap {
-                    if case let .chooseCount(count) = $0 {
-                        return count
-                    }
-                    return nil
+    private lazy var usersCountViewModel = UsersCountViewModel(usersCountService: usersCountService) { [unowned self] interactions in
+        interactions
+            .compactMap {
+                if case let .chooseCount(count) = $0 {
+                    return count
                 }
-                .assign(to: &self.$usersCountPublisher)
-        }
-        $usersCountPublisher
-            .assign(to: \.initialCount, on: viewModel)
-            .store(in: &cancellables)
+                return nil
+            }
+            .assign(to: &self.$usersCountPublisher)
+    }
 
-        return viewModel
-    }()
 
     @Published private var usersCountPublisher: Int = 5
 
-    private lazy var usersListService: UsersListService = {
-        RandomUsersListService(
-            usersCountPublisher: $usersCountPublisher.eraseToAnyPublisher(),
-            usersLoader: RandomUsersLoader(responseProvider: URLSession.shared)
-        )
-    }()
+    private lazy var usersCountService: UsersCountService = $usersCountPublisher.eraseToAnyPublisher()
+
+    private lazy var usersListService: UsersListService = RandomUsersListService(
+        usersCountService: usersCountService,
+        usersLoader: RandomUsersLoader(responseProvider: URLSession.shared)
+    )
+}
+
+extension AnyPublisher: UsersCountService where Output == Int, Failure == Never {
+    public var usersCount: AnyPublisher<Int, Never> {
+        self
+    }
 }
 
 extension AppCoordinator: Coordinator {

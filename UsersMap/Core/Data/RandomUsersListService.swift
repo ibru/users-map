@@ -13,21 +13,21 @@ protocol UsersLoader {
 }
 
 final class RandomUsersListService {
-    private let usersCountPublisher: AnyPublisher<Int, Never>
+    private let usersCountService: UsersCountService
     private let usersLoader: UsersLoader
 
     init(
-        usersCountPublisher: AnyPublisher<Int, Never>,
+        usersCountService: UsersCountService,
         usersLoader: UsersLoader
     ) {
-        self.usersCountPublisher = usersCountPublisher
+        self.usersCountService = usersCountService
         self.usersLoader = usersLoader
     }
 }
 
 extension RandomUsersListService: UsersListService {
     var users: AnyPublisher<[User], Error> {
-        usersCountPublisher
+        usersCountService.usersCount
             .flatMap { [unowned self] in
                 self.usersLoader.loadUsers(count: $0)
             }
