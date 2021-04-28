@@ -34,7 +34,7 @@ final class UsersMapViewController: UIViewController {
         super.loadView()
 
         mapView.delegate = self
-        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "annotation")
+        mapView.register(UserAnnotationView.self, forAnnotationViewWithReuseIdentifier: "annotation")
     }
 
     override func viewDidLoad() {
@@ -66,6 +66,10 @@ extension UsersMapViewController: MKMapViewDelegate {
             return
         }
         viewModel.select(user: annotation.user)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            mapView.deselectAnnotation(annotation, animated: false)
+        }
     }
 }
 
@@ -78,6 +82,8 @@ extension UsersMapViewController {
         }
 
         var title: String? { user.firstName }
+
+        var imageURL: URL? { user.avatarImageURL }
 
         init(user: UsersListViewModel.UserInfo) {
             self.user = user

@@ -51,6 +51,7 @@
 		49F8AA4E2636F798004E37F4 /* UsersCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA4D2636F797004E37F4 /* UsersCountViewController.swift */; };
 		49F8AA5426375F22004E37F4 /* ContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA5326375F22004E37F4 /* ContainerViewModel.swift */; };
 		49F8AA582637D15A004E37F4 /* UsersCountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AA572637D15A004E37F4 /* UsersCountService.swift */; };
+		49F8AAF426392EA0004E37F4 /* UserAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AAF326392EA0004E37F4 /* UserAnnotationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		49F8AA4D2636F797004E37F4 /* UsersCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCountViewController.swift; sourceTree = "<group>"; };
 		49F8AA5326375F22004E37F4 /* ContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewModel.swift; sourceTree = "<group>"; };
 		49F8AA572637D15A004E37F4 /* UsersCountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCountService.swift; sourceTree = "<group>"; };
+		49F8AAF326392EA0004E37F4 /* UserAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnnotationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				49563F382632D4E4007EA41D /* UsersMapViewController.swift */,
+				49F8AAF326392EA0004E37F4 /* UserAnnotationView.swift */,
 			);
 			path = "Users Map";
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				49563FB526353AC9007EA41D /* UserDetailViewViewModel.swift in Sources */,
 				492E5EDA2632CC8A009DA42E /* AppDelegate.swift in Sources */,
 				49563F8D2633E215007EA41D /* UserDetailViewController.swift in Sources */,
+				49F8AAF426392EA0004E37F4 /* UserAnnotationView.swift in Sources */,
 				49563FA92633EEB5007EA41D /* UIViewController+TransitioningDelegate.swift in Sources */,
 				49F8AA092636C515004E37F4 /* ResponseDataProviding.swift in Sources */,
 				49F8AA582637D15A004E37F4 /* UsersCountService.swift in Sources */,

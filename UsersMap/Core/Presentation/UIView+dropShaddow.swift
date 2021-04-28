@@ -17,10 +17,10 @@ extension UIView {
             cornerRadius: self.layer.cornerRadius
         ).cgPath
         shadowLayer.fillColor = self.backgroundColor?.cgColor
-        shadowLayer.shadowColor = UIColor.black.cgColor
-        shadowLayer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-        shadowLayer.shadowOpacity = 0.2
-        shadowLayer.shadowRadius = 8
+        shadowLayer.shadowColor = UIColor.black.withAlphaComponent(0.25).cgColor
+        shadowLayer.shadowOffset = CGSize(width: 0, height: 1)
+        shadowLayer.shadowOpacity = 0.5
+        shadowLayer.shadowRadius = 4
 
         self.layer.insertSublayer(shadowLayer, at: 0)
     }
