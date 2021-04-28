@@ -9,6 +9,19 @@ import UIKit
 import MapKit
 import Combine
 
+/*
+ Guide to use Mapbox
+
+ - show map: https://docs.mapbox.com/ios/maps/guides/install/ below on the page
+ - custom annotation view:
+   - subclass of MGLPointAnnotation: https://docs.mapbox.com/ios/maps/examples/annotation-views/, https://stackoverflow.com/a/43524093 for clustering needs to use ClusterKit
+   - maybe also MGLSymbolStyleLayer: https://docs.mapbox.com/ios/maps/examples/runtime-multiple-annotations/
+ - clustering:
+   - https://docs.mapbox.com/ios/maps/examples/clustering/
+   - https://github.com/hulab/ClusterKit/
+
+ */
+
 final class UsersMapViewController: UIViewController {
 
     private(set) var viewModel: UsersListViewModel!
