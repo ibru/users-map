@@ -19,9 +19,6 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trj-WM-evS">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <connections>
-                                    <segue destination="Dsq-pa-P84" kind="embed" id="f2F-55-Umt"/>
-                                </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3a8-qe-mRk">
                                 <rect key="frame" x="24" y="806" width="138" height="48"/>
@@ -93,32 +90,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X51-RI-SBJ">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vYa-wP-cTq">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MabBox container" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkZ-Er-yEB">
-                                        <rect key="frame" x="138" y="437.5" width="138" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                <constraints>
-                                    <constraint firstItem="jkZ-Er-yEB" firstAttribute="centerX" secondItem="X51-RI-SBJ" secondAttribute="centerX" id="fss-h5-lXb"/>
-                                    <constraint firstItem="jkZ-Er-yEB" firstAttribute="centerY" secondItem="X51-RI-SBJ" secondAttribute="centerY" id="hyM-yV-diu"/>
-                                </constraints>
-                            </view>
+                            </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UsM-pe-xdR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="X51-RI-SBJ" firstAttribute="leading" secondItem="UsM-pe-xdR" secondAttribute="leading" id="KVg-E9-phn"/>
-                            <constraint firstItem="X51-RI-SBJ" firstAttribute="trailing" secondItem="UsM-pe-xdR" secondAttribute="trailing" id="STR-ur-bVt"/>
-                            <constraint firstItem="X51-RI-SBJ" firstAttribute="top" secondItem="y84-gp-ZVV" secondAttribute="top" id="XgF-Fq-SVa"/>
-                            <constraint firstItem="X51-RI-SBJ" firstAttribute="bottom" secondItem="y84-gp-ZVV" secondAttribute="bottom" id="hQq-2S-gen"/>
+                            <constraint firstItem="vYa-wP-cTq" firstAttribute="leading" secondItem="UsM-pe-xdR" secondAttribute="leading" id="06J-fd-iHG"/>
+                            <constraint firstAttribute="bottom" secondItem="vYa-wP-cTq" secondAttribute="bottom" id="76x-qT-WoP"/>
+                            <constraint firstItem="vYa-wP-cTq" firstAttribute="top" secondItem="y84-gp-ZVV" secondAttribute="top" id="YfE-sg-BEN"/>
+                            <constraint firstItem="UsM-pe-xdR" firstAttribute="trailing" secondItem="vYa-wP-cTq" secondAttribute="trailing" id="hH8-AD-Un7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="vYa-wP-cTq" id="eQj-sj-QC6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOV-8O-a5Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -457,9 +444,6 @@
         <image name="party-balloon" width="20" height="20"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

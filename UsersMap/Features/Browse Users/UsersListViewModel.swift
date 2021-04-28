@@ -45,18 +45,24 @@ final class UsersListViewModel: ObservableObject {
     }
 }
 
+import MapKit
+
 extension UsersListViewModel {
     struct UserInfo: Identifiable {
         let id: String
         let avatarImageURL: URL?
         let fullName: String
+        let firstName: String
         let userName: String
+        let location: CLLocationCoordinate2D
 
         init(user: User) {
             id = user.id
             avatarImageURL = user.avatarURL.map { URL(string: $0) } ?? nil
             fullName = "\(user.firstName) \(user.lastName)"
+            firstName = user.firstName
             userName = user.username
+            location = .init(latitude: user.location.latitude, longitude: user.location.longitude)
         }
     }
 }

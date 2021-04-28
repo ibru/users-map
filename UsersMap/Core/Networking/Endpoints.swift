@@ -50,7 +50,10 @@ extension Endpoint where Response == [UserDTO] {
     static func users(count: Int) -> Self {
         Endpoint(
             path: "/",
-            queryItems: [.init(name: "results", value: "\(count)")]
+            queryItems: [
+                .init(name: "results", value: "\(count)"),
+                .init(name: "nat", value: "de,fr,gb,nl,es")
+            ]
         )
     }
 }

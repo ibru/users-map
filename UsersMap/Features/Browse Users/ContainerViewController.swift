@@ -41,6 +41,7 @@ final class ContainerViewController: UIViewController {
         super.viewDidLoad()
 
         contentSegmentedControl.selectedSegmentIndex = ContentSegment.map.rawValue
+        showMap()
 
         viewModel
             .$usersCount
