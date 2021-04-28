@@ -15,6 +15,8 @@ class UsersCountViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var numberOfUsersLabel: UILabel!
 
+    @IBOutlet weak var textAreaBottomMargin: NSLayoutConstraint!
+
     override func loadView() {
         super.loadView()
 
@@ -32,6 +34,12 @@ class UsersCountViewController: UIViewController {
         super.viewDidLoad()
 
         textField.text = "\(viewModel.initialCount)"
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardHeightChanged(_:)),
+            name: UIResponder.keyboardWillChangeFrameNotification, object: nil
+        )
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +72,16 @@ class UsersCountViewController: UIViewController {
         guard let text = textField.text, let count = Int(text) else { return }
 
         viewModel.set(count: count)
+    }
+
+    @objc private func keyboardHeightChanged(_ notification: Notification) {
+        if let frame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = frame.cgRectValue.height
+
+            UIView.animate(withDuration: 0.3) {
+                self.textAreaBottomMargin.constant = keyboardHeight
+            }
+        }
     }
 }
 

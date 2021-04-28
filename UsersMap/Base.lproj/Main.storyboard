@@ -429,6 +429,7 @@
                     <connections>
                         <outlet property="doneButton" destination="C2E-lS-uMw" id="l8H-xT-oCR"/>
                         <outlet property="numberOfUsersLabel" destination="szM-Dd-bHC" id="6yf-8o-MUI"/>
+                        <outlet property="textAreaBottomMargin" destination="8Zb-cA-NlN" id="4Ep-9m-mZy"/>
                         <outlet property="textField" destination="dc0-0E-Jnz" id="efJ-04-zF5"/>
                     </connections>
                 </viewController>
