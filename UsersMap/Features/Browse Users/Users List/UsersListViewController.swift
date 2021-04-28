@@ -39,7 +39,10 @@ final class UsersListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize = CGSize(width: view.bounds.width, height: 60)
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            let insetsWidth = flowLayout.sectionInset.left + flowLayout.sectionInset.right + collectionView.contentInset.left + collectionView.contentInset.right
+            flowLayout.itemSize = .init(width: collectionView.bounds.width - insetsWidth, height: 60)
+        }
     }
 }
 
