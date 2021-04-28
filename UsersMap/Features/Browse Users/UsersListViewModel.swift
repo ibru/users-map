@@ -24,6 +24,7 @@ final class UsersListViewModel: ObservableObject {
     ) {
         self.usersService = usersService
 
+        // TODO: consider resubscribing to usersService.users again if it receives error (or success) completion
         self.usersService.users
             .receive(on: DispatchQueue.main)
             .catch { error -> AnyPublisher<[User], Never>in

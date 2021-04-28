@@ -12,7 +12,6 @@ public protocol UsersListService {
     var users: AnyPublisher<[User], Error> { get }
 }
 
-
 #if DEBUG
 public struct MockUsersListService: UsersListService {
     private let mockUsers: [User]

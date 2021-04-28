@@ -34,6 +34,23 @@ final class UsersListViewController: UIViewController {
                 self?.collectionView.reloadData()
             }
             .store(in: &cancellables)
+
+        viewModel.$error
+            .sink { [weak self] in
+                if let error = $0, self?.isViewLoaded ?? false, self?.view.window != nil {
+                    let alertController = UIAlertController(
+                        title: NSLocalizedString("Error", comment: ""),
+                        message: NSLocalizedString("Oops. An error happened:\n \(error.localizedDescription)", comment: ""),
+                        preferredStyle: .alert)
+                    alertController.addAction(
+                        .init(
+                            title: NSLocalizedString("Okay", comment: ""),
+                            style: .cancel)
+                    )
+                    self?.present(alertController, animated: true)
+                }
+            }
+            .store(in: &cancellables)
     }
 
     override func viewWillAppear(_ animated: Bool) {
