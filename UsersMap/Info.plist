@@ -17,9 +17,16 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>CircularStd-Book.ttf</string>
+		<string>CircularStd-Bold.ttf</string>
+		<string>CircularStd-Medium.ttf</string>
+		<string>CircularStd-Black.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -61,13 +68,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>CircularStd-Book.ttf</string>
-		<string>CircularStd-Bold.ttf</string>
-		<string>CircularStd-Medium.ttf</string>
-		<string>CircularStd-Black.ttf</string>
 	</array>
 </dict>
 </plist>
